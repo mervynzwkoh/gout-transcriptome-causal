@@ -38,3 +38,42 @@ To execute this simulation on an entirely different genetic target (e.g., $URAT1
 2. Navigate to the **Global Configuration Boundary** cell.
 3. Update `TARGET_GENE_SYMBOL` and `TARGET_ENSEMBL_ID` with your desired target.
 4. Run **Runtime -> Run All**; the down-stream tokenizer dictionary and embedding masks will dynamically resolve the new sequence shapes automatically.
+
+## ⚙️ Environment Provisioning & Installation
+
+This project leverages a decoupled configuration structure. Environment installation logic has been stripped out of the core Jupyter runtimes to maintain pipeline hygiene and ensure local/cloud execution compatibility.
+
+### Prerequisites
+
+- Linux environment or a high-compute cloud environment (e.g., Google Colab with an A100/V100 Tensor Core GPU)
+- Python 3.10+
+- Active NVIDIA CUDA Driver workspace (required for TransformerEngine acceleration)
+
+### Local / Terminal Setup
+
+To initialize and provision the entire framework, clone this repository, change directories into the workspace root, and execute the automated environment bootstrap script:
+
+\`\`\`bash
+
+# 1. Clone the causal discovery pipeline
+
+git clone https://github.com/mervynzwkoh/gout-transcriptome-causal.git
+cd gout-transcriptome-causal
+
+# 2. Provision libraries, clone BioNeMo, and compile CUDA-capable TransformerEngine components
+
+./setup_env.sh
+\`\`\`
+
+### Google Colab Fast-Track Execution
+
+If you are running this pipeline inside an ephemeral Google Colab notebook instance, create a single execution block at the very top of your workspace to cleanly configure the stateless machine:
+
+\`\`\`python
+
+# Run this cell at the absolute beginning of your runtime session to bridge file volumes
+
+!git clone https://github.com/mervynzwkoh/gout-transcriptome-causal.git
+%cd gout-transcriptome-causal
+!bash setup_env.sh
+\`\`\`
