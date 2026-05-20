@@ -55,12 +55,12 @@ To initialize and provision the entire framework, clone this repository, change 
 
 \`\`\`bash
 
-# 1. Clone the causal discovery pipeline
+### 1. Clone the causal discovery pipeline
 
 git clone https://github.com/mervynzwkoh/gout-transcriptome-causal.git
 cd gout-transcriptome-causal
 
-# 2. Provision libraries, clone BioNeMo, and compile CUDA-capable TransformerEngine components
+### 2. Provision libraries, clone BioNeMo, and compile CUDA-capable TransformerEngine components
 
 ./setup_env.sh
 \`\`\`
@@ -71,7 +71,7 @@ If you are running this pipeline inside an ephemeral Google Colab notebook insta
 
 \`\`\`python
 
-# Run this cell at the absolute beginning of your runtime session to bridge file volumes
+### Run this cell at the absolute beginning of your runtime session to bridge file volumes
 
 !git clone https://github.com/mervynzwkoh/gout-transcriptome-causal.git
 %cd gout-transcriptome-causal
