@@ -3,3 +3,4 @@ scanpy
 anndata
 pandas
 pyarrow
+PyYAML
