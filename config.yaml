@@ -1,0 +1,21 @@
+biological_target:
+  gene_symbol: "ABCG2"
+  ensembl_id: "ENSG00000118777"
+  cell_line_split: "HEK293T"
+
+data_parameters:
+  max_subset_cells: 35
+  max_sequence_length: 2048
+  min_expression_threshold: 0.0
+
+hyperparameters:
+  batch_size: 4
+  learning_rate: 0.00005
+  weight_decay: 0.01
+  epochs: 3
+
+paths:
+  raw_data_output: "data/gout_cells_subset.pkl"
+  processed_data_output: "data/geneformer_tuning_input.pkl"
+  model_checkpoint_output: "data/gout_geneformer_finetuned.pt"
+  token_dictionary_path: "data/token_dictionary_gc104M.pkl"
