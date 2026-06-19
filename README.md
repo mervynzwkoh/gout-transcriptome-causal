@@ -4,7 +4,7 @@ An end-to-end digital biology and MLOps pipeline utilizing **NVIDIA BioNeMo (Tra
 
 ---
 
-## 🧬 Biological & Architectural Overview
+## Biological & Architectural Overview
 
 ### The Scientific Thesis
 
@@ -21,7 +21,7 @@ The system transitions away from interactive, linear notebook workflows into a p
 
 ---
 
-## 📊 Phase 5 Inference & Analytical Post-Mortem
+## Phase 5 Inference & Analytical Post-Mortem
 
 ### The Core Experiment
 
@@ -44,7 +44,7 @@ _Infrastructure Validation Status: Success. The pipeline is mathematically and a
 
 ---
 
-## 🛠️ Configuration Dashboard (`config.yaml`)
+## Configuration Dashboard (`config.yaml`)
 
 To target a completely different genetic axis (e.g., $URAT1$, $IL-1\beta$, or $TNF-\alpha$), **do not alter the underlying Python code**. Simply modify the central parameters dashboard at the root of the repository:
 
@@ -74,7 +74,7 @@ paths:
   token_dictionary_path: "data/token_dictionary_gc104M.pkl"
 ```
 
-## 🚀 Production Deployment via Docker
+## Production Deployment via Docker
 
 To eliminate local environment drift, cross-platform library fragmentation, and C++ compilation errors when binding NVIDIA's deep layers, the entire application workspace is containerized.
 
@@ -104,25 +104,25 @@ docker run --gpus all -v $(pwd)/data:/app/data digital-biology-pipeline
 
 ```markdown
 gout-transcriptome-causal/
-├── .dockerignore              # Prevents volatile local data from bloating builds
-├── .gitignore                 # Blocks heavy model binaries (*.pt, *.pkl) from Git histories
-├── Dockerfile                 # Provisions Ubuntu + CUDA 12.1 + BioNeMo + TransformerEngine
-├── README.md                  # Master executive engineering portfolio documentation
-├── config.yaml                # Centralized pipeline parameter dashboard
-├── main.py                    # Core pipeline conductor and orchestrator script
-├── requirements.txt           # Standard upstream Python dependencies
-├── setup_env.sh               # Shell automation script to compile external NVIDIA core packages
+├── .dockerignore # Prevents volatile local data from bloating builds
+├── .gitignore # Blocks heavy model binaries (_.pt, _.pkl) from Git histories
+├── Dockerfile # Provisions Ubuntu + CUDA 12.1 + BioNeMo + TransformerEngine
+├── README.md # Master executive engineering portfolio documentation
+├── config.yaml # Centralized pipeline parameter dashboard
+├── main.py # Core pipeline conductor and orchestrator script
+├── requirements.txt # Standard upstream Python dependencies
+├── setup_env.sh # Shell automation script to compile external NVIDIA core packages
 │
-├── pipeline/                  # Production decoupled functional execution modules
-│   ├── __init__.py
-│   ├── ingestion.py           # Lazy data streaming engine
-│   ├── preprocessing.py       # Rank-Value tokenization engine
-│   ├── fine_tuning.py         # Unrolled layer fine-tuning engine
-│   └── inference.py           # In-silico digital knockout mutation engine
+├── pipeline/ # Production decoupled functional execution modules
+│ ├── **init**.py
+│ ├── ingestion.py # Lazy data streaming engine
+│ ├── preprocessing.py # Rank-Value tokenization engine
+│ ├── fine_tuning.py # Unrolled layer fine-tuning engine
+│ └── inference.py # In-silico digital knockout mutation engine
 │
-└── notebooks/                 # Visual research sandboxes and historical logs
-    ├── 01_data_ingestion.ipynb
-    ├── 02_preprocessing.ipynb
-    ├── 03_model_fine_tuning.ipynb
-    └── 04_in_silico_inference.ipynb
+└── notebooks/ # Visual research sandboxes and historical logs
+├── 01_data_ingestion.ipynb
+├── 02_preprocessing.ipynb
+├── 03_model_fine_tuning.ipynb
+└── 04_in_silico_inference.ipynb
 ```
