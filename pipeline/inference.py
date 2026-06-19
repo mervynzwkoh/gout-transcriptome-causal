@@ -53,7 +53,7 @@ def run_inference(config):
         
     model.load_state_dict(torch.load(checkpoint, map_location=device))
     model.to(device)
-    model.eval()  # Freeze weights and dropout behaviors for deterministic calculations
+    model.eval()
 
     # 4. Deserializing Profiling Layers and Searching for Native Candidate Expression
     with open(config['paths']['processed_data_output'], 'rb') as f:
@@ -72,12 +72,17 @@ def run_inference(config):
 
     print(f"   ✅ Context located. Native expression identified at profile offset index: {target_cell_idx}")
     
-    # 5. Executing the In-Silico Tensor Knockout Mutation
+    # 5. Executing the In-Silico Tensor Knockout Mutation (Optimized Array Alignment)
     max_len = config['data_parameters']['max_sequence_length']
+    pad_id = config['data_parameters'].get('pad_token_id', 0)
+    
+    # Extract baseline sequence up to maximum bounds
     baseline_sequence = data['tokens'][target_cell_idx][:max_len]
     
-    pad_id = config['data_parameters']['pad_token_id']
-    perturbed_sequence = [pad_id if token == target_token_id else token for token in baseline_sequence]
+    # Filter out the target token entirely, then right-pad to preserve exact dimensions
+    perturbed_sequence = [token for token in baseline_sequence if token != target_token_id]
+    if len(perturbed_sequence) < max_len:
+        perturbed_sequence.extend([pad_id] * (max_len - len(perturbed_sequence)))
 
     # Package parallel sequences into native hardware configurations
     baseline_tensor = torch.tensor([baseline_sequence], dtype=torch.long).to(device)

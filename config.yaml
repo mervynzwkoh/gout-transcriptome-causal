@@ -7,6 +7,7 @@ data_parameters:
   max_subset_cells: 35
   max_sequence_length: 2048
   min_expression_threshold: 0.0
+  pad_token_id: 0
 
 hyperparameters:
   batch_size: 4
@@ -15,6 +16,7 @@ hyperparameters:
   epochs: 3
 
 paths:
+  bionemo_recipe_path: "/content/bionemo-framework/bionemo-recipes/models/geneformer/src/geneformer"
   raw_data_output: "data/gout_cells_subset.pkl"
   processed_data_output: "data/geneformer_tuning_input.pkl"
   model_checkpoint_output: "data/gout_geneformer_finetuned.pt"

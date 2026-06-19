@@ -7,6 +7,9 @@ def run_preprocessing(config):
     
     with open(config['paths']['raw_data_output'], 'rb') as f:
         gout_cells = pickle.load(f)
+    
+    max_len = config['data_parameters']['max_sequence_length']
+    pad_id = config['data_parameters'].get('pad_token_id', 0)
         
     def preprocess_for_geneformer(cell_data):
         temp_df = pd.DataFrame({
@@ -15,7 +18,13 @@ def run_preprocessing(config):
         })
         temp_df = temp_df[temp_df['count'] > config['data_parameters']['min_expression_threshold']]
         temp_df = temp_df.sort_values(by='count', ascending=False)
-        return temp_df['token'].tolist()[:config['data_parameters']['max_sequence_length']]
+        tokens = temp_df['token'].tolist()[:max_len]
+        
+        # Enforce uniform dimensions: pad right if sequence is shorter than max_len
+        if len(tokens) < max_len:
+            tokens.extend([pad_id] * (max_len - len(tokens)))
+            
+        return tokens
 
     tokenized_cells = [preprocess_for_geneformer(cell) for cell in gout_cells]
     
