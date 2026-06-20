@@ -3,7 +3,7 @@ import pickle
 import pandas as pd
 
 def run_preprocessing(config):
-    print("⚙️ [Phase 2] Executing rank-value tokenization...")
+    print("[Phase 2] Executing rank-value tokenization...")
     
     with open(config['paths']['raw_data_output'], 'rb') as f:
         gout_cells = pickle.load(f)
@@ -36,4 +36,4 @@ def run_preprocessing(config):
     with open(config['paths']['processed_data_output'], 'wb') as f:
         pickle.dump(fine_tuning_data, f)
         
-    print(f"✅ Preprocessing successful. Data serialized to {config['paths']['processed_data_output']}\n")
+    print(f"Preprocessing successful. Data serialized to {config['paths']['processed_data_output']}\n")

@@ -57,7 +57,7 @@ class GoutDosageDataset(Dataset):
 
 
 def run_fine_tuning(config):
-    print("🔥 [Phase 3] Initiating hardware-accelerated fine-tuning script...")
+    print("[Phase 3] Initiating hardware-accelerated fine-tuning script...")
     
     # 1. Force CUDA launch synchronization for precise tracing logs
     os.environ['CUDA_LAUNCH_BLOCKING'] = '1'
@@ -105,7 +105,7 @@ def run_fine_tuning(config):
 
     # 7. Core Training Loop Execution
     epochs = config['hyperparameters']['epochs']
-    print(f"   🚀 Training network model weights for {epochs} epochs over {len(dataset)} samples...")
+    print(f"   Training network model weights for {epochs} epochs over {len(dataset)} samples...")
     
     for epoch in range(epochs):
         model.train()
@@ -129,4 +129,4 @@ def run_fine_tuning(config):
     # 8. Extract State Dictionary and Serialize Checkpoint Out to Disk Volume
     os.makedirs(os.path.dirname(config['paths']['model_checkpoint_output']), exist_ok=True)
     torch.save(model.state_dict(), config['paths']['model_checkpoint_output'])
-    print(f"✅ Fine-tuning complete. Checkpoint written to {config['paths']['model_checkpoint_output']}\n")
+    print(f"Fine-tuning complete. Checkpoint written to {config['paths']['model_checkpoint_output']}\n")

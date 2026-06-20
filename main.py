@@ -5,7 +5,7 @@ from pipeline.fine_tuning import run_fine_tuning
 from pipeline.inference import run_inference    
 
 def main():
-    print("🚀 Initializing End-to-End Digital Biology Pipeline...\n")
+    print("Initializing End-to-End Digital Biology Pipeline...\n")
     
     # 1. Load the central dashboard
     with open("config.yaml", "r") as f:
@@ -17,7 +17,7 @@ def main():
     run_fine_tuning(config)
     run_inference(config)
     
-    print("🎯 Pipeline execution completed successfully.")
+    print("Pipeline execution completed successfully.")
 
 if __name__ == "__main__":
     main()
