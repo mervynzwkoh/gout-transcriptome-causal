@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
 COPY requirements.txt setup_env.sh ./
 
 # 5. Execute Setup (BioNeMo & Python Packages)
+COPY setup_env.sh .
 RUN chmod +x setup_env.sh && ./setup_env.sh
 
 # 6. Copy Pipeline Source Code and Config

@@ -1,6 +1,6 @@
 # Causal Modeling of Dose-Dependent Genetic Perturbations in Gout-Related Urate Transporters
 
-An end-to-end digital biology and MLOps pipeline utilizing **NVIDIA BioNeMo (TransformerEngine)** to simulate single-cell transcriptomic shifts following targeted _in-silico_ genetic knockouts.
+An end-to-end digital biology pipeline utilizing **NVIDIA BioNeMo (TransformerEngine)** to simulate single-cell transcriptomic shifts following targeted _in-silico_ genetic knockouts.
 
 ---
 
